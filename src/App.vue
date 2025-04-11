@@ -92,9 +92,9 @@
                 </p>
                 <div
                   class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start reveal-element reveal-delay-600">
-                  <button @click="currentPage = '#contact'"
+                  <button @click="currentPage = '#calculateur'"
                     class="bg-white text-violet-800 px-8 py-3 rounded-full font-medium hover:shadow-lg transition-all">
-                    Demander un devis
+                    Calculer un tarif
                   </button>
                   <button @click="currentPage = '#apropos'"
                     class="bg-transparent border-2 border-white/50 text-white px-8 py-3 rounded-full font-medium hover:bg-white/10 transition-all">
@@ -276,9 +276,9 @@
                 de livraison.
               </p>
               <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button @click="currentPage = '#contact'"
+                <button @click="currentPage = '#calculateur'"
                   class="bg-white text-violet-800 px-8 py-4 rounded-full font-medium hover:shadow-lg transition-all">
-                  Demander un devis gratuit
+                  Calculer un tarif
                 </button>
                 <button @click="currentPage = '#apropos'"
                   class="bg-transparent border-2 border-white/50 text-white px-8 py-4 rounded-full font-medium hover:bg-white/10 transition-all">
@@ -353,17 +353,17 @@
                   Une extension naturelle au service de l'efficacité
                 </h2>
                 <p class="text-gray-600 mb-6">
-                  Créée en 2025, Cello Express est née de la volonté de Cello Events d’optimiser la logistique de ses
-                  événements. Pensée comme une branche opérationnelle de l’agence, elle s’est rapidement imposée comme
+                  Créée en 2025, Cello Express est née de la volonté de Cello Events d'optimiser la logistique de ses
+                  événements. Pensée comme une branche opérationnelle de l'agence, elle s'est rapidement imposée comme
                   un maillon essentiel dans la chaîne de livraison.
                 </p>
                 <p class="text-gray-600 mb-6">
-                  À ses débuts, avec seulement deux véhicules, Cello Express reflétait l’ambition de ses fondateurs :
+                  À ses débuts, avec seulement deux véhicules, Cello Express reflétait l'ambition de ses fondateurs :
                   proposer un service de livraison à la fois fiable, rapide et aligné sur les valeurs de proximité et
-                  d’excellence portées par Cello Events.
+                  d'excellence portées par Cello Events.
                 </p>
                 <p class="text-gray-600">
-                  Aujourd’hui, notre flotte s’est agrandie et notre équipe s’est étoffée, mais notre engagement reste le
+                  Aujourd'hui, notre flotte s'est agrandie et notre équipe s'est étoffée, mais notre engagement reste le
                   même : offrir des solutions de livraison efficaces, personnalisées et responsables, tant pour les
                   particuliers que pour les entreprises.
                 </p>
@@ -465,7 +465,7 @@
                 Ce qui nous distingue
               </h2>
               <p class="text-purple-200 max-w-2xl mx-auto">
-                Découvrez pourquoi Cello Express est le partenaire idéal pour tous vos besoins de livraison.
+                Découvrez pourquoi Cello Express est le partenaire idé al pour tous vos besoins de livraison.
               </p>
             </div>
 
@@ -480,6 +480,197 @@
                 <p class="text-purple-200">
                   {{ feature.description }}
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Calculateur de Prix Page -->
+      <div v-if="currentPage === '#calculateur'" class="w-full">
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden">
+          <!-- Background elements -->
+          <div class="absolute inset-0 bg-gradient-to-br from-violet-900 via-violet-800 to-purple-900 opacity-95"></div>
+          <div class="absolute inset-0">
+            <div
+              class="absolute top-0 right-0 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl opacity-20 -translate-y-1/2"
+              ref="parallaxBgCalc1"></div>
+            <div
+              class="absolute bottom-0 left-0 w-96 h-96 bg-violet-500 rounded-full filter blur-3xl opacity-20 translate-y-1/2"
+              ref="parallaxBgCalc2"></div>
+          </div>
+
+          <div class="container mx-auto px-4 py-24 md:py-32 relative z-10 text-center" ref="calculatorHero">
+            <div
+              class="inline-block px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium mb-6 reveal-element">
+              Calculateur de Prix
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white reveal-element reveal-delay-200">
+              Estimez le coût de votre livraison
+            </h1>
+            <p class="text-lg text-purple-100 mb-8 max-w-2xl mx-auto reveal-element reveal-delay-400">
+              Utilisez notre calculateur pour obtenir une estimation précise du coût de votre livraison en fonction de la distance.
+            </p>
+          </div>
+
+          <!-- Wave separator -->
+          <div class="absolute bottom-0 left-0 w-full">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" class="w-full h-auto">
+              <path fill="#ffffff" fill-opacity="1"
+                d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z">
+              </path>
+            </svg>
+          </div>
+        </section>
+
+        <!-- Calculateur Section -->
+        <section class="py-20 bg-white" ref="calculatorSection">
+          <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+              <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Carte et formulaire -->
+                <div class="lg:w-2/3 reveal-element reveal-left">
+                  <div class="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl p-8 shadow-sm h-full">
+                    <div class="mb-6">
+                      <div class="inline-block px-3 py-1 bg-violet-100 rounded-full text-violet-800 text-sm font-medium mb-4">
+                        Sélectionnez les points de livraison
+                      </div>
+                      <h2 class="text-2xl font-bold mb-4 bg-gradient-to-r from-violet-700 to-purple-600 bg-clip-text text-transparent">
+                        Carte interactive
+                      </h2>
+                      <p class="text-gray-600 mb-6">
+                        Cliquez sur la carte pour définir le point de départ et d'arrivée de votre livraison.
+                      </p>
+                    </div>
+
+                    <!-- Formulaire d'adresse -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                      <div class="relative overflow-hidden">
+                        <label for="startAddress" class="block text-sm font-medium text-gray-700 mb-1">Adresse de départ</label>
+                        <div class="flex">
+                          <input type="text" id="startAddress" v-model="startAddress"
+                            class="w-full px-4 py-3 rounded-l-lg border border-gray-200 focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                            placeholder="Entrez l'adresse de départ" />
+                          <button @click="searchStartAddress" 
+                            class="bg-gradient-to-r from-violet-600 to-purple-500 text-white px-4 py-2 rounded-r-lg">
+                            <Search class="h-5 w-5" />
+                          </button>
+                        </div>
+                      </div>
+                      <div class="relative overflow-hidden">
+                        <label for="endAddress" class="block text-sm font-medium text-gray-700 mb-1">Adresse d'arrivée</label>
+                        <div class="flex">
+                          <input type="text" id="endAddress" v-model="endAddress"
+                            class="w-full px-4 py-3 rounded-l-lg border border-gray-200 focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
+                            placeholder="Entrez l'adresse d'arrivée" />
+                          <button @click="searchEndAddress" 
+                            class="bg-gradient-to-r from-violet-600 to-purple-500 text-white px-4 py-2 rounded-r-lg">
+                            <Search class="h-5 w-5" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Carte -->
+                    <div class="w-full h-96 rounded-xl overflow-hidden shadow-md mb-6" ref="mapContainer">
+                      <!-- La carte sera chargée ici -->
+                    </div>
+
+                    <div class="flex justify-center">
+                      <button @click="calculateRoute" 
+                        class="bg-gradient-to-r from-violet-600 to-purple-500 text-white px-8 py-3 rounded-lg font-medium hover:shadow-lg transition-all">
+                        Calculer l'itinéraire
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Résultats et tarifs -->
+                <div class="lg:w-1/3 reveal-element reveal-right">
+                  <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm h-full">
+                    <div class="inline-block px-3 py-1 bg-violet-100 rounded-full text-violet-800 text-sm font-medium mb-4">
+                      Résultat
+                    </div>
+                    <h2 class="text-2xl font-bold mb-6 bg-gradient-to-r from-violet-700 to-purple-600 bg-clip-text text-transparent">
+                      Estimation du prix
+                    </h2>
+
+                    <div v-if="distance > 0" class="mb-8">
+                      <div class="flex justify-between items-center p-4 bg-violet-50 rounded-lg mb-4">
+                        <div>
+                          <p class="text-gray-700 font-medium">Distance calculée:</p>
+                        </div>
+                        <div>
+                          <p class="text-xl font-bold text-violet-700">{{ distance.toFixed(2) }} km</p>
+                        </div>
+                      </div>
+
+                      <div class="flex justify-between items-center p-4 bg-purple-50 rounded-lg mb-6">
+                        <div>
+                          <p class="text-gray-700 font-medium">Prix estimé:</p>
+                        </div>
+                        <div>
+                          <p class="text-2xl font-bold text-purple-700">{{ calculatedPrice }} F</p>
+                        </div>
+                      </div>
+
+                      <div class="text-center">
+                        <button @click="currentPage = '#contact'" 
+                          class="bg-gradient-to-r from-violet-600 to-purple-500 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all w-full">
+                          Réserver cette livraison
+                        </button>
+                      </div>
+                    </div>
+
+                    <div v-else class="mb-8 text-center p-8">
+                      <MapPin class="h-12 w-12 text-violet-300 mx-auto mb-4" />
+                      <p class="text-gray-500">Sélectionnez les points de départ et d'arrivée sur la carte pour obtenir une estimation de prix.</p>
+                    </div>
+
+                    <!-- Grille tarifaire -->
+                    <div class="mt-8">
+                      <h3 class="font-bold text-gray-800 mb-4">Grille tarifaire</h3>
+                      <div class="space-y-2 text-sm">
+                        <div v-for="(rate, index) in deliveryRates" :key="index" 
+                          class="flex justify-between p-2 rounded" 
+                          :class="{'bg-violet-50': isCurrentRateCategory(rate)}">
+                          <span class="text-gray-700">{{ rate.range }}</span>
+                          <span class="font-medium" :class="{'text-violet-700 font-bold': isCurrentRateCategory(rate)}">
+                            {{ rate.price }}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-20 bg-gray-50" ref="faqCalculatorSection">
+          <div class="container mx-auto px-4">
+            <div class="text-center mb-16 reveal-element">
+              <div class="inline-block px-3 py-1 bg-violet-100 rounded-full text-violet-800 text-sm font-medium mb-4">
+                Questions fréquentes
+              </div>
+              <h2
+                class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-violet-700 to-purple-600 bg-clip-text text-transparent">
+                À propos de nos tarifs
+              </h2>
+              <p class="text-gray-600 max-w-2xl mx-auto">
+                Trouvez des réponses à vos questions concernant notre système de tarification.
+              </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-6">
+              <div v-for="(faq, index) in pricingFaqs" :key="index"
+                class="bg-gradient-to-br from-violet-50 to-purple-50 rounded-xl p-6 hover:shadow-lg transition-all reveal-element"
+                :class="`reveal-delay-${index * 100}`">
+                <h3 class="text-lg font-bold text-gray-800 mb-2">{{ faq.question }}</h3>
+                <p class="text-gray-600">{{ faq.answer }}</p>
               </div>
             </div>
           </div>
@@ -798,22 +989,17 @@
                 </a>
               </li>
               <li>
+                <a href="#calculateur" @click="currentPage = '#calculateur'"
+                  class="text-purple-200 hover:text-white transition-colors flex items-center group">
+                  <ChevronRight class="h-4 w-4 mr-2 transform group-hover:translate-x-1 transition-transform" />
+                  Calculateur
+                </a>
+              </li>
+              <li>
                 <a href="#contact" @click="currentPage = '#contact'"
                   class="text-purple-200 hover:text-white transition-colors flex items-center group">
                   <ChevronRight class="h-4 w-4 mr-2 transform group-hover:translate-x-1 transition-transform" />
                   Contact
-                </a>
-              </li>
-              <li>
-                <a href="#" class="text-purple-200 hover:text-white transition-colors flex items-center group">
-                  <ChevronRight class="h-4 w-4 mr-2 transform group-hover:translate-x-1 transition-transform" />
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#" class="text-purple-200 hover:text-white transition-colors flex items-center group">
-                  <ChevronRight class="h-4 w-4 mr-2 transform group-hover:translate-x-1 transition-transform" />
-                  FAQ
                 </a>
               </li>
             </ul>
@@ -888,13 +1074,14 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch, onBeforeUnmount } from 'vue';
 import {
   Truck, Menu, X, User, Star, Shield, Heart, Leaf,
   MapPin, Phone, Mail, Clock, Map, Facebook, Twitter,
   Instagram, Linkedin, Send, ArrowRight, ChevronRight,
-  ShieldCheck, HeartHandshake
+  ShieldCheck, HeartHandshake, Search
 } from 'lucide-vue-next';
+
 
 // Navigation state
 const mobileMenuOpen = ref(false);
@@ -904,6 +1091,7 @@ const currentPage = ref('#accueil');
 const navItems = [
   { name: 'Accueil', path: '#accueil' },
   { name: 'À Propos', path: '#apropos' },
+  { name: 'Calculateur', path: '#calculateur' },
   { name: 'Contact', path: '#contact' }
 ];
 
@@ -1043,7 +1231,6 @@ const team = [
     position: 'Livreur n°2',
     bio: 'Son sens du service et sa courtoisie font de lui un livreur apprécié des clients'
   }
-
 ];
 
 // FAQ data
@@ -1067,6 +1254,30 @@ const faqs = [
   {
     question: 'Proposez-vous une assurance pour les colis?',
     answer: 'Oui, tous nos envois sont assurés par défaut jusqu\'à une certaine valeur. Pour les objets de valeur supérieure, nous proposons des options d\'assurance complémentaires.'
+  }
+];
+
+// Pricing FAQ data
+const pricingFaqs = [
+  {
+    question: 'Comment calculez-vous le prix de la livraison?',
+    answer: 'Notre tarification est basée sur la distance entre le point de départ et le point d\'arrivée. Nous utilisons un système de tranches kilométriques pour déterminer le prix final.'
+  },
+  {
+    question: 'Y a-t-il des frais supplémentaires?',
+    answer: 'Pour les livraisons standard, le prix affiché est tout compris. Des frais supplémentaires peuvent s\'appliquer pour les colis volumineux, lourds ou nécessitant une manipulation spéciale.'
+  },
+  {
+    question: 'Proposez-vous des tarifs dégressifs pour les entreprises?',
+    answer: 'Oui, nous offrons des tarifs préférentiels pour les entreprises avec des volumes réguliers. Contactez notre service commercial pour obtenir une offre personnalisée.'
+  },
+  {
+    question: 'Le prix est-il le même pour toutes les zones de Cotonou?',
+    answer: 'Oui, notre tarification est uniquement basée sur la distance, quelle que soit la zone de Cotonou. Cependant, certaines zones difficiles d\'accès peuvent nécessiter un supplément.'
+  },
+  {
+    question: 'Comment puis-je payer ma livraison?',
+    answer: 'Nous acceptons les paiements en espèces à la livraison, par mobile money, ou par virement bancaire pour les clients professionnels.'
   }
 ];
 
@@ -1112,6 +1323,8 @@ const parallaxBg9 = ref(null);
 const parallaxBg10 = ref(null);
 const parallaxBg11 = ref(null);
 const parallaxBg12 = ref(null);
+const parallaxBgCalc1 = ref(null);
+const parallaxBgCalc2 = ref(null);
 
 // References for sections
 const heroContent = ref(null);
@@ -1130,6 +1343,9 @@ const contactHero = ref(null);
 const contactFormSection = ref(null);
 const mapSection = ref(null);
 const faqSection = ref(null);
+const calculatorHero = ref(null);
+const calculatorSection = ref(null);
+const faqCalculatorSection = ref(null);
 
 // Animation for counting up numbers
 const animateCounters = () => {
@@ -1172,7 +1388,8 @@ const handleParallax = () => {
   const parallaxElements = [
     parallaxBg1.value, parallaxBg2.value, parallaxBg3.value, parallaxBg4.value,
     parallaxBg5.value, parallaxBg6.value, parallaxBg7.value, parallaxBg8.value,
-    parallaxBg9.value, parallaxBg10.value, parallaxBg11.value, parallaxBg12.value
+    parallaxBg9.value, parallaxBg10.value, parallaxBg11.value, parallaxBg12.value,
+    parallaxBgCalc1.value, parallaxBgCalc2.value
   ];
 
   parallaxElements.forEach(element => {
@@ -1221,14 +1438,374 @@ watch(currentPage, (newPage, oldPage) => {
       if (newPage === '#accueil') {
         animateCounters();
       }
+      if (newPage === '#calculateur' && mapInitialized.value === false) {
+        initMap();
+      }
     }, 100);
   }
 });
 
+// Calculateur de prix variables
+const mapContainer = ref(null);
+const startAddress = ref('');
+const endAddress = ref('');
+const distance = ref(0);
+const calculatedPrice = ref('0');
+let map = null;
+let startMarker = null;
+let endMarker = null;
+let routeLayer = null;
+const mapInitialized = ref(false);
+
+// Grille tarifaire
+const deliveryRates = [
+  { range: '1 à 5 km', price: '500F', min: 1, max: 5, value: 500 },
+  { range: '6 à 10 km', price: '800F', min: 6, max: 10, value: 800 },
+  { range: '11 à 15 km', price: '1000F - 1300F', min: 11, max: 15, minValue: 1000, maxValue: 1300 },
+  { range: '16 à 20 km', price: '1300F - 1500F', min: 16, max: 20, minValue: 1300, maxValue: 1500 },
+  { range: '21 à 25 km', price: '2000F', min: 21, max: 25, value: 2000 },
+  { range: '26 à 30 km', price: '2500F', min: 26, max: 30, value: 2500 },
+  { range: '31 à 35 km', price: '3000F', min: 31, max: 35, value: 3000 },
+  { range: '36 à 40 km', price: '4000F', min: 36, max: 40, value: 4000 }
+];
+
+// Vérifier si la distance actuelle correspond à une catégorie de tarif
+const isCurrentRateCategory = (rate) => {
+  return distance.value >= rate.min && distance.value <= rate.max;
+};
+
+// Calculer le prix en fonction de la distance
+const calculatePrice = (dist) => {
+  for (const rate of deliveryRates) {
+    if (dist >= rate.min && dist <= rate.max) {
+      if (rate.value) {
+        return rate.value.toString() + 'F';
+      } else {
+        // Pour les plages avec min et max (ex: 1000F-1300F)
+        const range = rate.max - rate.min;
+        const position = dist - rate.min;
+        const ratio = position / range;
+        const price = Math.round(rate.minValue + ratio * (rate.maxValue - rate.minValue));
+        return price.toString() + 'F';
+      }
+    }
+  }
+  return '4000F+'; // Au-delà de 40km
+};
+
+// Charger Leaflet depuis CDN
+const loadLeaflet = async () => {
+  return new Promise((resolve) => {
+    // Vérifier si Leaflet est déjà chargé
+    if (window.L) {
+      resolve();
+      return;
+    }
+    
+    // Charger le CSS de Leaflet
+    const linkElement = document.createElement('link');
+    linkElement.rel = 'stylesheet';
+    linkElement.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    document.head.appendChild(linkElement);
+    
+    // Charger le JS de Leaflet
+    const scriptElement = document.createElement('script');
+    scriptElement.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    scriptElement.onload = resolve;
+    document.head.appendChild(scriptElement);
+  });
+};
+
+// Initialiser la carte Leaflet
+const initMap = async () => {
+  if (!mapContainer.value || mapInitialized.value) return;
+
+  // Charger Leaflet depuis CDN
+  await loadLeaflet();
+  
+  // Coordonnées de Cotonou
+  const cotonouCoords = [6.3676953, 2.4252507];
+  
+  // Créer la carte
+  map = window.L.map(mapContainer.value).setView(cotonouCoords, 13);
+  
+  // Ajouter la couche de tuiles OpenStreetMap
+  window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  
+  // Ajouter des gestionnaires d'événements pour les clics sur la carte
+  map.on('click', handleMapClick);
+  
+  mapInitialized.value = true;
+};
+
+// Gérer les clics sur la carte
+const handleMapClick = (e) => {
+  const { lat, lng } = e.latlng;
+  const L = window.L; // Utiliser L depuis window
+  
+  // Si le marqueur de départ n'existe pas, le créer
+  if (!startMarker) {
+    startMarker = L.marker([lat, lng], {
+      icon: L.divIcon({
+        html: `<div class="bg-violet-600 p-2 rounded-full border-2 border-white shadow-lg"></div>`,
+        className: 'custom-div-icon'
+      })
+    }).addTo(map);
+    startMarker.bindPopup('Point de départ').openPopup();
+    
+    // Mettre à jour l'adresse de départ via géocodage inverse
+    reverseGeocode(lat, lng, (address) => {
+      startAddress.value = address;
+    });
+  } 
+  // Sinon, si le marqueur d'arrivée n'existe pas, le créer
+  else if (!endMarker) {
+    endMarker = L.marker([lat, lng], {
+      icon: L.divIcon({
+        html: `<div class="bg-purple-600 p-2 rounded-full border-2 border-white shadow-lg"></div>`,
+        className: 'custom-div-icon'
+      })
+    }).addTo(map);
+    endMarker.bindPopup('Point d\'arrivée').openPopup();
+    
+    // Mettre à jour l'adresse d'arrivée via géocodage inverse
+    reverseGeocode(lat, lng, (address) => {
+      endAddress.value = address;
+    });
+    
+    // Calculer l'itinéraire automatiquement
+    calculateRoute();
+  } 
+  // Si les deux marqueurs existent déjà, réinitialiser et créer un nouveau marqueur de départ
+  else {
+    clearRoute();
+    startMarker = L.marker([lat, lng], {
+      icon: L.divIcon({
+        html: `<div class="bg-violet-600 p-2 rounded-full border-2 border-white shadow-lg"></div>`,
+        className: 'custom-div-icon'
+      })
+    }).addTo(map);
+    startMarker.bindPopup('Point de départ').openPopup();
+    
+    // Mettre à jour l'adresse de départ via géocodage inverse
+    reverseGeocode(lat, lng, (address) => {
+      startAddress.value = address;
+    });
+    
+    endMarker = null;
+    endAddress.value = '';
+    distance.value = 0;
+    calculatedPrice.value = '0';
+  }
+};
+
+// Rechercher une adresse de départ
+const searchStartAddress = () => {
+  if (!startAddress.value) return;
+  
+  geocode(startAddress.value, (lat, lng) => {
+    const L = window.L; // Utiliser L depuis window
+    
+    if (startMarker) {
+      startMarker.setLatLng([lat, lng]);
+    } else {
+      startMarker = L.marker([lat, lng], {
+        icon: L.divIcon({
+          html: `<div class="bg-violet-600 p-2 rounded-full border-2 border-white shadow-lg"></div>`,
+          className: 'custom-div-icon'
+        })
+      }).addTo(map);
+    }
+    
+    map.setView([lat, lng], 13);
+    startMarker.bindPopup('Point de départ').openPopup();
+    
+    if (endMarker) {
+      calculateRoute();
+    }
+  });
+};
+
+// Rechercher une adresse d'arrivée
+const searchEndAddress = () => {
+  if (!endAddress.value) return;
+  
+  geocode(endAddress.value, (lat, lng) => {
+    const L = window.L; // Utiliser L depuis window
+    
+    if (endMarker) {
+      endMarker.setLatLng([lat, lng]);
+    } else {
+      endMarker = L.marker([lat, lng], {
+        icon: L.divIcon({
+          html: `<div class="bg-purple-600 p-2 rounded-full border-2 border-white shadow-lg"></div>`,
+          className: 'custom-div-icon'
+        })
+      }).addTo(map);
+    }
+    
+    map.setView([lat, lng], 13);
+    endMarker.bindPopup('Point d\'arrivée').openPopup();
+    
+    if (startMarker) {
+      calculateRoute();
+    }
+  });
+};
+
+// Géocodage (adresse -> coordonnées)
+const geocode = (address, callback) => {
+  // Utiliser Nominatim pour le géocodage (gratuit)
+  fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&limit=1`)
+    .then(response => response.json())
+    .then(data => {
+      if (data && data.length > 0) {
+        callback(parseFloat(data[0].lat), parseFloat(data[0].lon));
+      } else {
+        alert('Adresse non trouvée. Veuillez essayer avec une adresse plus précise.');
+      }
+    })
+    .catch(error => {
+      console.error('Erreur de géocodage:', error);
+      alert('Erreur lors de la recherche de l\'adresse. Veuillez réessayer.');
+    });
+};
+
+// Géocodage inverse (coordonnées -> adresse)
+const reverseGeocode = (lat, lng, callback) => {
+  // Utiliser Nominatim pour le géocodage inverse (gratuit)
+  fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`)
+    .then(response => response.json())
+    .then(data => {
+      if (data && data.display_name) {
+        callback(data.display_name);
+      } else {
+        callback('Adresse inconnue');
+      }
+    })
+    .catch(error => {
+      console.error('Erreur de géocodage inverse:', error);
+      callback('Adresse inconnue');
+    });
+};
+
+// Calculer l'itinéraire entre les deux points
+const calculateRoute = () => {
+  if (!startMarker || !endMarker) {
+    alert('Veuillez sélectionner les points de départ et d\'arrivée.');
+    return;
+  }
+  
+  const L = window.L; // Utiliser L depuis window
+  
+  // Effacer l'itinéraire précédent s'il existe
+  if (routeLayer) {
+    map.removeLayer(routeLayer);
+    routeLayer = null;
+  }
+  
+  const startLatLng = startMarker.getLatLng();
+  const endLatLng = endMarker.getLatLng();
+  
+  // Utiliser OpenRouteService pour calculer l'itinéraire (gratuit avec limitations)
+  // Note: Dans un environnement de production, vous devriez obtenir votre propre clé API
+  const apiKey = '5b3ce3597851110001cf6248f6c8e5b6b9f94a6f9f5d7e1a1c9c2c7c';
+  const url = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=${apiKey}&start=${startLatLng.lng},${startLatLng.lat}&end=${endLatLng.lng},${endLatLng.lat}`;
+  
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      if (data && data.features && data.features.length > 0) {
+        // Extraire la géométrie de l'itinéraire
+        const route = data.features[0];
+        const coordinates = route.geometry.coordinates.map(coord => [coord[1], coord[0]]);
+        
+        // Créer une ligne pour l'itinéraire
+        routeLayer = L.polyline(coordinates, {
+          color: '#8b5cf6',
+          weight: 6,
+          opacity: 0.7,
+          lineJoin: 'round'
+        }).addTo(map);
+        
+        // Ajuster la vue pour voir tout l'itinéraire
+        map.fitBounds(routeLayer.getBounds(), { padding: [50, 50] });
+        
+        // Calculer la distance en kilomètres
+        distance.value = route.properties.summary.distance / 1000;
+        
+        // Calculer le prix
+        calculatedPrice.value = calculatePrice(distance.value);
+      } else {
+        // Fallback: calculer la distance à vol d'oiseau si l'API échoue
+        distance.value = startLatLng.distanceTo(endLatLng) / 1000;
+        calculatedPrice.value = calculatePrice(distance.value);
+        
+        // Créer une ligne droite entre les points
+        routeLayer = L.polyline([startLatLng, endLatLng], {
+          color: '#8b5cf6',
+          weight: 6,
+          opacity: 0.7,
+          dashArray: '10, 10',
+          lineJoin: 'round'
+        }).addTo(map);
+        
+        // Ajuster la vue
+        map.fitBounds(routeLayer.getBounds(), { padding: [50, 50] });
+        
+        alert('Calcul d\'itinéraire précis indisponible. Distance à vol d\'oiseau utilisée.');
+      }
+    })
+    .catch(error => {
+      console.error('Erreur de calcul d\'itinéraire:', error);
+      
+      // Fallback: calculer la distance à vol d'oiseau
+      distance.value = startLatLng.distanceTo(endLatLng) / 1000;
+      calculatedPrice.value = calculatePrice(distance.value);
+      
+      // Créer une ligne droite entre les points
+      routeLayer = L.polyline([startLatLng, endLatLng], {
+        color: '#8b5cf6',
+        weight: 6,
+        opacity: 0.7,
+        dashArray: '10, 10',
+        lineJoin: 'round'
+      }).addTo(map);
+      
+      // Ajuster la vue
+      map.fitBounds(routeLayer.getBounds(), { padding: [50, 50] });
+      
+      alert('Erreur lors du calcul de l\'itinéraire. Distance à vol d\'oiseau utilisée.');
+    });
+};
+
+// Effacer l'itinéraire et les marqueurs
+const clearRoute = () => {
+  if (routeLayer) {
+    map.removeLayer(routeLayer);
+    routeLayer = null;
+  }
+  
+  if (startMarker) {
+    map.removeLayer(startMarker);
+    startMarker = null;
+  }
+  
+  if (endMarker) {
+    map.removeLayer(endMarker);
+    endMarker = null;
+  }
+  
+  distance.value = 0;
+  calculatedPrice.value = '0';
+};
+
 // Check URL hash on load and setup animations
 onMounted(() => {
   const hash = window.location.hash;
-  if (hash && (hash === '#accueil' || hash === '#apropos' || hash === '#contact')) {
+  if (hash && (hash === '#accueil' || hash === '#apropos' || hash === '#contact' || hash === '#calculateur')) {
     currentPage.value = hash;
   } else {
     currentPage.value = '#accueil';
@@ -1240,6 +1817,16 @@ onMounted(() => {
 
   // Add scroll event listener for parallax effects
   window.addEventListener('scroll', handleParallax);
+  
+  // Initialize map if on calculator page
+  if (currentPage.value === '#calculateur') {
+    initMap();
+  }
+});
+
+// Clean up event listeners
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleParallax);
 });
 </script>
 
@@ -1313,5 +1900,27 @@ select:focus {
 .page-leave-to {
   opacity: 0;
   transform: translateY(20px);
+}
+
+/* Styles pour les marqueurs personnalisés */
+.custom-div-icon {
+  background: transparent;
+  border: none;
+}
+
+/* Styles pour les popups Leaflet */
+.leaflet-popup-content-wrapper {
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.leaflet-popup-content {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  color: #4B5563;
+}
+
+.leaflet-popup-tip {
+  background-color: white;
 }
 </style>
