@@ -1,0 +1,100 @@
+@import 'tailwindcss';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Scroll animations */
+.reveal-element {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal-element.reveal-left {
+  transform: translateX(-50px);
+}
+
+.reveal-element.reveal-right {
+  transform: translateX(50px);
+}
+
+.reveal-element.reveal-delay-200 {
+  transition-delay: 0.2s;
+}
+
+.reveal-element.reveal-delay-400 {
+  transition-delay: 0.4s;
+}
+
+.reveal-element.reveal-delay-600 {
+  transition-delay: 0.6s;
+}
+
+.reveal-element.revealed {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Process line animation */
+.process-line {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1s ease 0.5s;
+}
+
+.process-line.revealed {
+  transform: scaleX(1);
+}
+
+/* Custom focus styles */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3);
+}
+
+/* Page transitions */
+.page-enter-active,
+.page-leave-active {
+  transition:
+    opacity 0.5s,
+    transform 0.5s;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Styles pour les marqueurs personnalisés */
+.custom-div-icon {
+  background: transparent;
+  border: none;
+}
+
+/* Styles pour les popups Leaflet */
+.leaflet-popup-content-wrapper {
+  border-radius: 10px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.leaflet-popup-content {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.leaflet-popup-tip {
+  background-color: white;
+}
