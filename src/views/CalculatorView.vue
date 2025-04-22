@@ -74,16 +74,25 @@
                       class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                       placeholder="Entrez l'adresse de départ"
                     />
+                    <Search v-if="isLoadingSuggestions && showStartSuggestions" class="absolute right-3 top-3.5 h-5 w-5 text-gray-400 animate-pulse" />
+                    
                     <ul v-if="startSuggestions.length > 0 && showStartSuggestions" class="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-auto">
                       <li
                         v-for="(suggestion, index) in startSuggestions"
                         :key="index"
-                        @click="selectAddress(suggestion, 'start')"
-                        class="px-4 py-2 hover:bg-violet-50 cursor-pointer"
+                        @mousedown.prevent="selectAddress(suggestion, 'start')"
+                        class="px-4 py-2 hover:bg-violet-50 cursor-pointer flex items-start"
                       >
-                        {{ suggestion.display_name }}
+                        <MapPin class="h-4 w-4 text-violet-500 mr-2 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <div class="font-medium text-gray-900">{{ suggestion.name || suggestion.display_name.split(',')[0] }}</div>
+                          <div class="text-xs text-gray-500">{{ suggestion.display_name }}</div>
+                        </div>
                       </li>
                     </ul>
+                    <div v-else-if="isLoadingSuggestions && showStartSuggestions" class="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-4 text-center text-gray-500">
+                      Recherche en cours...
+                    </div>
                   </div>
                 </div>
                 <div class="relative overflow-hidden">
@@ -99,16 +108,25 @@
                       class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                       placeholder="Entrez l'adresse d'arrivée"
                     />
+                    <Search v-if="isLoadingSuggestions && showEndSuggestions" class="absolute right-3 top-3.5 h-5 w-5 text-gray-400 animate-pulse" />
+                    
                     <ul v-if="endSuggestions.length > 0 && showEndSuggestions" class="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-auto">
                       <li
                         v-for="(suggestion, index) in endSuggestions"
                         :key="index"
-                        @click="selectAddress(suggestion, 'end')"
-                        class="px-4 py-2 hover:bg-violet-50 cursor-pointer"
+                        @mousedown.prevent="selectAddress(suggestion, 'end')"
+                        class="px-4 py-2 hover:bg-violet-50 cursor-pointer flex items-start"
                       >
-                        {{ suggestion.display_name }}
+                        <MapPin class="h-4 w-4 text-violet-500 mr-2 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <div class="font-medium text-gray-900">{{ suggestion.name || suggestion.display_name.split(',')[0] }}</div>
+                          <div class="text-xs text-gray-500">{{ suggestion.display_name }}</div>
+                        </div>
                       </li>
                     </ul>
+                    <div v-else-if="isLoadingSuggestions && showEndSuggestions" class="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-4 text-center text-gray-500">
+                      Recherche en cours...
+                    </div>
                   </div>
                 </div>
               </div>
@@ -259,6 +277,7 @@ const startSuggestions = ref([])
 const endSuggestions = ref([])
 const showStartSuggestions = ref(false)
 const showEndSuggestions = ref(false)
+const isLoadingSuggestions = ref(false)
 
 // Pricing FAQ data
 const pricingFaqs = [
@@ -298,27 +317,36 @@ const deliveryRates = ref([
 // Recherche d'adresse avec debounce
 const searchAddress = debounce(async (type) => {
   const query = type === 'start' ? startAddress.value : endAddress.value
-  if (!query || query.length < 3) {
+  if (!query || query.length < 2) {
     if (type === 'start') startSuggestions.value = []
     else endSuggestions.value = []
     return
   }
 
+  isLoadingSuggestions.value = true
   try {
     const response = await fetch(
-      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&addressdetails=1&limit=5&countrycodes=bn`
+      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&addressdetails=1&limit=5&countrycodes=bj&featuretype=settlement,road&accept-language=fr`
     )
     const data = await response.json()
     
+    // Filtrer les résultats pour ne garder que les plus pertinents
+    const filteredData = data.filter(item => {
+      return item.type === 'city' || item.type === 'town' || item.type === 'village' || 
+             item.type === 'road' || item.type === 'street' || item.class === 'boundary'
+    })
+    
     if (type === 'start') {
-      startSuggestions.value = data
+      startSuggestions.value = filteredData
     } else {
-      endSuggestions.value = data
+      endSuggestions.value = filteredData
     }
   } catch (error) {
     console.error('Erreur de recherche:', error)
+  } finally {
+    isLoadingSuggestions.value = false
   }
-}, 300)
+}, 200)
 
 // Sélection d'une adresse
 const selectAddress = (suggestion, type) => {
