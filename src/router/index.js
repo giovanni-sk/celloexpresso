@@ -5,9 +5,9 @@ import CalculatorView from '../views/CalculatorView.vue'
 import ContactView from '../views/ContactView.vue'
 
 const routes = [
-  { path: '/calculateur', component: HomeView },
+  { path: '/', component: HomeView },
   { path: '/apropos', component: AboutView },
-  { path: '/', component: CalculatorView },
+  { path: '/calculateur', component: CalculatorView },
   { path: '/contact', component: ContactView },
 ]
 

@@ -6,18 +6,19 @@
       class="absolute inset-0 bg-gradient-to-br from-violet-900 via-violet-800 to-purple-900 opacity-95"
     ></div>
     <div class="absolute inset-0">
-      <div
-        class="absolute top-0 left-0 w-full h-full bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvu89xKNKMQViIkw2dKWY7MjgQ0tYpmQ4BTQ&s')] opacity-10 bg-cover bg-center"
-      ></div>
-      <div
-        class="absolute top-0 right-0 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl opacity-20 -translate-y-1/2"
-        ref="parallaxBg1"
-      ></div>
-      <div
-        class="absolute bottom-0 left-0 w-96 h-96 bg-violet-500 rounded-full filter blur-3xl opacity-20 translate-y-1/2"
-        ref="parallaxBg2"
-      ></div>
-    </div>
+    <!-- Image de fond avec opacité augmentée -->
+    <div
+      class="absolute top-0 left-0 w-full h-full bg-[url('../assets/images/amazone.webp')] opacity-30 bg-cover bg-center"
+    ></div>
+    <div
+      class="absolute top-0 right-0 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl opacity-20 -translate-y-1/2"
+      ref="parallaxBg1"
+    ></div>
+    <div
+      class="absolute bottom-0 left-0 w-96 h-96 bg-violet-500 rounded-full filter blur-3xl opacity-20 translate-y-1/2"
+      ref="parallaxBg2"
+    ></div>
+  </div>
 
     <div class="container mx-auto px-4 py-24 md:py-32 lg:py-40 relative z-10">
       <div class="flex flex-col md:flex-row items-center">

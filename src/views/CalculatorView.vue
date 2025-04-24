@@ -70,7 +70,7 @@
                       v-model="startAddress"
                       @input="searchAddress('start')"
                       @focus="showStartSuggestions = true"
-                      @blur="setTimeout(() => { showStartSuggestions = false }, 200)"
+                      @blur="handleBlur('start')"
                       class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                       placeholder="Entrez l'adresse de départ"
                     />
@@ -104,7 +104,7 @@
                       v-model="endAddress"
                       @input="searchAddress('end')"
                       @focus="showEndSuggestions = true"
-                      @blur="setTimeout(() => { showEndSuggestions = false }, 200)"
+                      @blur="handleBlur('end')"
                       class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all"
                       placeholder="Entrez l'adresse d'arrivée"
                     />
@@ -259,6 +259,17 @@ import {
 
 // Navigation state
 const currentPage = ref('#calculator')
+const {setTimeout}=window
+
+const handleBlur = (type) => {
+  setTimeout(() => {
+    if (type === 'start') {
+      showStartSuggestions.value = false
+    } else {
+      showEndSuggestions.value = false
+    }
+  }, 200)
+}
 
 // Calculateur de prix variables
 const mapContainer = ref(null)
